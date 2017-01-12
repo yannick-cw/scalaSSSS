@@ -24,8 +24,8 @@ Add to your `build.sbt`
     resolvers += "jitpack" at "https://jitpack.io"
     
     // scala versions
-    libraryDependencies += "com.github.yannick-cw_2.11" % "scalaSSSS" % "0.1.1"	
-    libraryDependencies += "com.github.yannick-cw_2.12" % "scalaSSSS" % "0.1.1"	
+    libraryDependencies += "com.github.yannick-cw" % "scalaSSSS_2.11" % "0.1.1"	
+    libraryDependencies += "com.github.yannick-cw" % "scalaSSSS_2.12" % "0.1.1"	
 ```
 
 ```scala
