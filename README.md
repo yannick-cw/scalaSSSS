@@ -1,19 +1,18 @@
 ## Scala -- Shamir's Secret Sharing Scheme
 
-This is a scala implementation of [Shamir's Secret Sharing Scheme](http://www.dtic.mil/cgi-bin/GetTRDoc?AD=ADA069397) algorithm.
+This is a scala implementation of [Shamir's Secret Sharing Scheme](https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing) algorithm.
+See the original [pdf](https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing)
 
 ### Concept
 
-Imagine you do want to leave the password for launching all your countries nukes in the hand of the president.
+Imagine you do not want to leave the password for launching all your countries nukes in the hand of the president.
 Instead you decide the secret password `I was elected to lead not to read` gets distributed to
 the president, vice president, first lady, influential lobbyist and general of the army.
 Now you want to allow the nuke whenever 3 of the 5 decide so.
 
 That's what SSSS (Shamir's Secret Sharing Scheme) does.
-The secret gets split up in 5 parts and whenever you have at least 3 of the 5 parts you can
+The secret gets split up in n parts and whenever you have at least k of the n parts you can
 restore the original secret. Two parts of the secret do not help you in any way.
-
-Details of the [Scheme](https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing#Javascript_example)
 
 ### Basic Usage
 
