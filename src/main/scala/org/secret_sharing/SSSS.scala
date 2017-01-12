@@ -1,9 +1,7 @@
 package org.secret_sharing
 
 import java.nio.charset.StandardCharsets.UTF_8
-
 import org.secret_sharing.Validation._
-
 import scala.util.Random
 
 trait SSSSOps[Error, Share] {
