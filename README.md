@@ -14,7 +14,7 @@ Now you want to allow the nuke whenever 3 of the 5 decide so.
 
 That's what SSSS (Shamir's Secret Sharing Scheme) does.
 The secret gets split up in n parts and whenever you have at least k of the n parts you can
-restore the original secret. Two parts of the secret do not help you in any way.
+restore the original secret. k - 1 parts of the secret do not help you in any way.
 
 ### Basic Usage
 
