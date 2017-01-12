@@ -1,4 +1,5 @@
 ## Scala -- Shamir's Secret Sharing Scheme
+[![](https://jitpack.io/v/yannick-cw/scalaSSSS.svg)](https://jitpack.io/#yannick-cw/scalaSSSS)
 
 This is a scala implementation of [Shamir's Secret Sharing Scheme](https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing) algorithm.
 See the original [pdf](https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing)
@@ -15,6 +16,13 @@ The secret gets split up in n parts and whenever you have at least k of the n pa
 restore the original secret. Two parts of the secret do not help you in any way.
 
 ### Basic Usage
+
+Add to your `build.sbt`
+
+```scala
+    resolvers += "jitpack" at "https://jitpack.io"
+    libraryDependencies += "com.github.yannick-cw" % "scalaSSSS" % "0.1.0"	
+```
 
 ```scala
 import SSSS._
