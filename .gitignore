@@ -1,0 +1,3 @@
+target/
+src/main/scala/org/secret_sharing/Tester.scala
+.idea
