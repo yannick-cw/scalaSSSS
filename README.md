@@ -51,7 +51,7 @@ case class Share(x: BigInt, y: BigInt, hash: Array[Byte], primeUsed: String)
 ```
 
 The share case class carries all information needed for recombination.
-The `hash` is a md5 hash and can be used to reidentify shares belonging to the same
+The `hash` is a [sha-256](https://de.wikipedia.org/wiki/SHA-2) hash and can be used to reidentify shares belonging to the same
 secret. Furthermore it is used to verify that a valid secret was restored.
 The `primeUsed` is a `BigInt` prime needed for [security](https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing#Solution) reason.
 
