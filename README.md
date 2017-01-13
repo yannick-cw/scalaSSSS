@@ -3,7 +3,7 @@
 [![Build Status](https://travis-ci.org/yannick-cw/scalaSSSS.svg?branch=master)](https://travis-ci.org/yannick-cw/scalaSSSS)
 
 This is a scala implementation of [Shamir's Secret Sharing Scheme](https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing) algorithm.
-See the original [pdf](https://en.wikipedia.org/wiki/Shamir's_Secret_Sharing)
+See the original [pdf](https://cs.jhu.edu/~sdoshi/crypto/papers/shamirturing.pdf)
 
 ### Concept
 
