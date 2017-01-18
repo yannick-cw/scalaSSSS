@@ -15,10 +15,11 @@ private[secret_sharing] object Validation {
     else if (shares.exists(_.primeUsed != shares.head.primeUsed)) Left(InvalidInput(s"all shares have to have the same prime"))
     else Right(())
 
-  def validateIn(requiredParts: Int, totalParts: Int): Either[ShareError, Unit] =
+  def validateIn(requiredParts: Int, totalParts: Int, secret: Array[Byte]): Either[ShareError, Unit] =
     if (requiredParts > totalParts) Left(InvalidInput(s"requiredParts must be less than totalParts ($requiredParts > $totalParts)"))
     else if (requiredParts < 1) Left(InvalidInput(s"requiredParts ($requiredParts) must be bigger 0"))
     else if (totalParts < 1) Left(InvalidInput(s"totalParts ($totalParts) must be bigger 0"))
+    else if (secret.isEmpty) Left(InvalidInput(s"secret must be nonempty"))
     else Right(())
 
 }

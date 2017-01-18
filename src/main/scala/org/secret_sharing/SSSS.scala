@@ -34,7 +34,7 @@ trait SSSSOps[Error, Share] {
 object SSSS extends SSSSOps[ShareError, Share] {
   def shares(secret: Array[Byte], requiredParts: Int, totalParts: Int, random: Random): Either[ShareError, List[Share]] =
     for {
-      _ <- validateIn(requiredParts, totalParts)
+      _ <- validateIn(requiredParts, totalParts, secret)
       prime <- BigPrimes.extractPrime(secret)
     } yield Shares(secret, requiredParts, totalParts, prime, random).get
 
