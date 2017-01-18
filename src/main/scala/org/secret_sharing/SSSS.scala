@@ -42,7 +42,7 @@ object SSSS extends SSSSOps[ShareError, Share] {
     for {
       _ <- validateShares(shares)
       secret = LaGrangeInterpolation.coefficient0(shares)
-      _ <- validateSecret(secret.toByteArray, shares.head.hash)
+      _ <- validateSecret(secret.toByteArray, shares.head.hash.toArray)
     } yield secret
 }
 

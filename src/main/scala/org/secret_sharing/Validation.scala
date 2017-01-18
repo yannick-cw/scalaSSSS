@@ -19,7 +19,7 @@ private[secret_sharing] object Validation {
     if (requiredParts > totalParts) Left(InvalidInput(s"requiredParts must be less than totalParts ($requiredParts > $totalParts)"))
     else if (requiredParts < 1) Left(InvalidInput(s"requiredParts ($requiredParts) must be bigger 0"))
     else if (totalParts < 1) Left(InvalidInput(s"totalParts ($totalParts) must be bigger 0"))
-    else if (secret.isEmpty) Left(InvalidInput(s"secret must be nonempty"))
+    else if (secret.isEmpty) Left(InvalidInput(s"secret ($totalParts) must be bigger 0"))
     else Right(())
 
 }
