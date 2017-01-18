@@ -37,10 +37,17 @@ class ShamirOpsSpec extends Properties("ShamirOps") {
           .flatMap{shares => combine(shuffle(shares).take(k))} == Right(secret))
     }
 
-  property("never able to combine with k-1 shares") =
+  property("never be able to combine with k-1 shares") =
     forAll(Gen.alphaStr, posInt, posInt) { (secret: String, k: Int, n: Int) =>
       (secret.nonEmpty && k <= n) ==>
         shares(secret, k, n)
+          .flatMap(shares => combine(shuffle(shares).take(k - 1))).isLeft
+    }
+
+  property("always reject empty secret") =
+    forAll(posInt, posInt) { (k: Int, n: Int) =>
+      (k <= n) ==>
+        shares("", k, n)
           .flatMap(shares => combine(shuffle(shares).take(k - 1))).isLeft
     }
 
