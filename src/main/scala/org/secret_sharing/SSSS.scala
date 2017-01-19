@@ -14,7 +14,7 @@ trait SSSSOps[Error, Share] {
   // this ensures the encrypted shares for the same secret are always the same
   // But opens gate to dictionary attacks
   def unsafeShares(secret: Array[Byte], requiredParts: Int, totalParts: Int): Either[Error, List[Share]] =
-    shares(secret, requiredParts, totalParts, new Random(BigInt(secret).toLong))
+    shares(secret, requiredParts, totalParts, new Random(if(secret.nonEmpty) BigInt(secret).toLong else 0L))
 
   def shares(secret: Array[Byte], requiredParts: Int, totalParts: Int): Either[Error, List[Share]] =
     shares(secret, requiredParts, totalParts, Random)
