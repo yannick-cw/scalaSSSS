@@ -80,5 +80,12 @@ class ShamirOpsSpec extends Properties("ShamirOps") {
             combine(modifiedShares)
           }.isLeft
     }
+
+  property("be able to decrypt from same shares from different creations") =
+    forAll(Gen.alphaStr, posInt, posInt) { (secret: String, k: Int, n: Int) =>
+      (secret.nonEmpty && k <= n && n > 1) ==> combine(
+        shuffle((1 to 100).flatMap(_ => unsafeShares(secret, k, n).get).toList.distinct).take(k)
+      ).isRight
+    }
 }
 

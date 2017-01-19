@@ -11,6 +11,11 @@ trait SSSSOps[Error, Share] {
   // creates combined string or returns an error, if shares are from different secrets
   def combineToBigInt(shares: List[Share]): Either[Error, BigInt]
 
+  // this ensures the encrypted shares for the same secret are always the same
+  // But opens gate to dictionary attacks
+  def unsafeShares(secret: Array[Byte], requiredParts: Int, totalParts: Int): Either[Error, List[Share]] =
+    shares(secret, requiredParts, totalParts, new Random(BigInt(secret).toLong))
+
   def shares(secret: Array[Byte], requiredParts: Int, totalParts: Int): Either[Error, List[Share]] =
     shares(secret, requiredParts, totalParts, Random)
 
@@ -18,11 +23,15 @@ trait SSSSOps[Error, Share] {
     shares(secret.getBytes(UTF_8), requiredParts, totalParts, random)
   def shares(secret: String, requiredParts: Int, totalParts: Int): Either[Error, List[Share]] =
     shares(secret, requiredParts, totalParts, Random)
+  def unsafeShares(secret: String, requiredParts: Int, totalParts: Int): Either[Error, List[Share]] =
+    unsafeShares(secret.getBytes(UTF_8), requiredParts, totalParts)
 
   def shares(secret: BigInt, requiredParts: Int, totalParts: Int, random: Random): Either[Error, List[Share]] =
     shares(secret.toByteArray, requiredParts, totalParts, random)
   def shares(secret: BigInt, requiredParts: Int, totalParts: Int): Either[Error, List[Share]] =
     shares(secret, requiredParts, totalParts, Random)
+  def unsafeShares(secret: BigInt, requiredParts: Int, totalParts: Int): Either[Error, List[Share]] =
+    unsafeShares(secret.toByteArray, requiredParts, totalParts)
 
   def combine(shares: List[Share]): Either[Error, String] =
     combineToBigInt(shares).map(bigInt => new String(bigInt.toByteArray, UTF_8))
